@@ -10,18 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
+            <!-- Logo with Image Only -->
             <div class="company-logo-loading">
-                <div class="logo-icon-loading">
-                    <i class="fas fa-arrow-up"></i>
-                    <i class="fas fa-arrow-down"></i>
-                </div>
+                <img src="C:\Users\jeeva\Downloads\Logo.png" alt="Triangle Clif Elevators Logo" class="loading-logo-image">
                 <div class="logo-text-loading">
                     <span class="logo-main-loading">TRIANGLE CLIF</span>
                     <span class="logo-sub-loading">ELEVATOR SOLUTIONS</span>
@@ -31,7 +28,110 @@
                 <div class="progress-bar-loading">
                     <div class="progress-fill-loading"></div>
                 </div>
-                <p class="loading-text">Elevating Bangalore Since 2025...</p>
+                <p class="loading-text">Elevating Bangalore Since 2005...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Get Quote Popup -->
+    <div class="quote-popup" id="quotePopup">
+        <div class="popup-overlay" id="popupOverlay"></div>
+        <div class="popup-container">
+            <button class="popup-close" id="popupClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-header">
+                <div class="popup-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h2>Get Free Quote</h2>
+                <p>Fill in your details and we'll redirect you to our detailed calculator</p>
+            </div>
+            
+            <!-- FormSubmit Form -->
+            <form id="quoteForm" class="popup-form" target="_blank" action="https://formsubmit.co/triangleclifelevators2000@gmail.com" method="POST">
+                <!-- FormSubmit Hidden Fields -->
+                <input type="hidden" name="_subject" value="📞 New Quote Request - Triangle Clif Elevators">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://triangleclif.com/calculator.html">
+                <input type="hidden" name="_autoresponse" value="Thank you for contacting Triangle Clif Elevators! Our elevator expert will call you within 30 minutes to discuss your requirements and provide a customized quote. For immediate assistance, call +91 70197 56807. Looking forward to elevating your space!">
+                <input type="hidden" name="_cc" value="sales@triangleclif.com">
+                
+                <!-- Optional: Add honeypot field for spam prevention -->
+                <input type="text" name="_honey" style="display:none">
+                
+                <div class="form-group">
+                    <label for="popupName">Full Name *</label>
+                    <input type="text" id="popupName" name="Full Name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="popupEmail">Email Address *</label>
+                    <input type="email" id="popupEmail" name="Email Address" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="popupPhone">Phone Number *</label>
+                    <input type="tel" id="popupPhone" name="Phone Number" required placeholder="+91 " value="+91 ">
+                </div>
+                
+                <div class="form-group">
+                    <label for="popupMessage">Your Requirements</label>
+                    <textarea id="popupMessage" name="Requirements" rows="3" placeholder="Briefly describe your elevator needs..."></textarea>
+                </div>
+                
+                <!-- Additional Fields for Better Lead Qualification -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="popupLocation">Location *</label>
+                        <input type="text" id="popupLocation" name="Location" required placeholder="Bangalore Area">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="popupType">Elevator Type</label>
+                        <select id="popupType" name="Elevator Type">
+                            <option value="">Select type</option>
+                            <option value="Passenger">Passenger Elevator</option>
+                            <option value="Home">Home Elevator</option>
+                            <option value="Hospital">Hospital Elevator</option>
+                            <option value="Commercial">Commercial Elevator</option>
+                            <option value="Freight">Freight Elevator</option>
+                            <option value="Accessibility">Accessibility Elevator</option>
+                            <option value="Not sure">Not sure - Need consultation</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="popupConsent" name="Consent" value="Agreed" required>
+                        <span>I agree to receive quotes and updates via WhatsApp/Email</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="popupCallback" name="Callback" value="Yes" checked>
+                        <span>Call me back within 30 minutes</span>
+                    </label>
+                </div>
+                
+                <!-- Source tracking -->
+                <input type="hidden" name="Source" value="Website Quote Popup">
+                <input type="hidden" name="Page URL" value="" id="pageUrl">
+                <input type="hidden" name="Timestamp" value="" id="timestamp">
+                
+                <button type="submit" class="btn btn-primary btn-full btn-large">
+                    <i class="fas fa-arrow-right"></i> Submit & Proceed to Calculator
+                </button>
+                
+                <div class="form-message" id="popupMessageDisplay"></div>
+            </form>
+            
+            <div class="popup-footer">
+                <p><i class="fas fa-shield-alt"></i> Your information is secure with us</p>
+                <p style="font-size: 0.8rem; margin-top: 5px;">
+                    <i class="fas fa-phone"></i> For immediate assistance: +91 70197 56807
+                </p>
             </div>
         </div>
     </div>
@@ -53,19 +153,17 @@
         </a>
     </div>
 
-    <!-- Header & Navigation -->
+    <!-- Header & Navigation - Fixed Alignment -->
     <header class="main-header" id="mainHeader">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <a href="index.html" aria-label="Triangle Clif Elevators Home">
-                        <div class="logo-icon">
-                            <i class="fas fa-arrow-up"></i>
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
+                        <!-- Logo with Image Only - Fixed path -->
+                        <img src="C:\Users\jeeva\Downloads\Logo.png" alt="Triangle Clif Elevators Logo" class="logo-image">
                         <div class="logo-text">
                             <span class="logo-main">TRIANGLE CLIF ELEVATORS</span>
-                            <span class="logo-sub">BANGALORE | EST. 2025</span>
+                            <span class="logo-sub">Built on Safety. Driven by Trust</span>
                         </div>
                     </a>
                 </div>
@@ -93,9 +191,9 @@
                         <li><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
                     <div class="header-cta">
-                        <a href="calculator.html" class="btn btn-primary" id="quoteCalculatorBtn">
+                        <button class="btn btn-primary btn-quote-nav" id="quotePopupBtn">
                             <i class="fas fa-calculator"></i> Get Quote
-                        </a>
+                        </button>
                     </div>
                 </nav>
                 
@@ -122,15 +220,15 @@
                     <h1 class="hero-title">Elevating Spaces, Enhancing Lives</h1>
                     <p class="hero-subtitle">Premium elevator solutions in Bangalore engineered for safety, reliability, and smart technology integration.</p>
                     <div class="hero-actions">
-                        <a href="calculator.html" class="btn btn-primary btn-large pulse-animation">
+                        <button class="btn btn-primary btn-large pulse-animation" id="heroQuoteBtn">
                             <i class="fas fa-calculator"></i> Get Free Quote
-                        </a>
+                        </button>
                         <a href="tel:+917019756807" class="btn btn-secondary btn-large">
-                            <i class="fas fa-phone-alt"></i> +91 70197 56807
+                            <i class="fas fa-phone-alt"></i> +91 7338387666
                         </a>
                     </div>
                     <div class="hero-location">
-                        <i class="fas fa-map-marker-alt"></i> Serving Bangalore & Karnataka Since 1995
+                        <i class="fas fa-map-marker-alt"></i> Serving Bangalore & Karnataka Since 2005
                     </div>
                 </div>
             </div>
@@ -145,12 +243,12 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">About Triangle Clif</h2>
-                    <p class="section-subtitle">Leading the future of vertical transportation in Bangalore since 1995</p>
+                    <p class="section-subtitle">Leading the future of vertical transportation in Bangalore since 2005</p>
                 </div>
                 
                 <div class="about-content">
                     <div class="about-text">
-                        <p>With over 25 years of industry expertise, Triangle Clif has established itself as Bangalore's premier provider of elevator and lifting solutions across residential, commercial, and industrial sectors. Our commitment to innovation, safety, and customer satisfaction drives everything we do.</p>
+                        <p>With over 20 years of industry expertise, Triangle Clif has established itself as Bangalore's premier provider of elevator and lifting solutions across residential, commercial, and industrial sectors. Our commitment to innovation, safety, and customer satisfaction drives everything we do.</p>
                         
                         <p>We combine cutting-edge technology with meticulous engineering to deliver elevators that are not just functional but transformative. Our team of certified professionals ensures every installation meets the highest standards of quality and reliability.</p>
                         
@@ -162,7 +260,7 @@
                             <div class="feature-icon-wrapper">
                                 <i class="fas fa-award"></i>
                             </div>
-                            <h3>25+ Years</h3>
+                            <h3>20+ Years</h3>
                             <p>Industry leaders since 1995</p>
                         </div>
                         
@@ -170,7 +268,7 @@
                             <div class="feature-icon-wrapper">
                                 <i class="fas fa-check-circle"></i>
                             </div>
-                            <h3>5000+ Projects</h3>
+                            <h3>456+ Projects</h3>
                             <p>Successfully completed</p>
                         </div>
                         
@@ -193,7 +291,7 @@
                 </div>
                 
                 <div class="text-center">
-                    <a href="#about" class="btn btn-outline hover-grow">Read More About Us</a>
+                    <button class="btn btn-outline hover-grow" id="aboutQuoteBtn">Get Free Quote</button>
                 </div>
             </div>
         </section>
@@ -308,7 +406,11 @@
                     <!-- Passenger Elevator -->
                     <div class="product-card" data-category="passenger" id="passenger">
                         <div class="product-image">
-                            <i class="fas fa-users"></i>
+                            <!-- Fixed image path -->
+                            <img src="images/passenger-elevator.jpg" alt="Modern Passenger Elevator - Triangle Clif Bangalore" loading="lazy">
+                            <div class="product-image-overlay">
+                                <i class="fas fa-users"></i>
+                            </div>
                         </div>
                         <div class="product-content">
                             <h3 class="product-title">Passenger Elevators</h3>
@@ -453,7 +555,7 @@
                                         </div>
                                         <div class="feature-details">
                                             <h4>Smooth & Silent Operations</h4>
-                                            <p>Eco Planet Villa elevator comes with Gearless PMSM machine giving ultra-silent ride.</p>
+                                            <p>Triangleclif Villa elevator comes with Gearless PMSM machine giving ultra-silent ride.</p>
                                         </div>
                                     </div>
                                     <div class="feature-highlight">
@@ -477,14 +579,18 @@
                                 </div>
                             </div>
                             
-                            <a href="calculator.html" class="btn btn-outline hover-grow">Get Quote</a>
+                            <button class="btn btn-outline hover-grow product-quote-btn">Get Quote</button>
                         </div>
                     </div>
                     
                     <!-- Home Elevator -->
                     <div class="product-card" data-category="home" id="home-elevators">
                         <div class="product-image">
-                            <i class="fas fa-home"></i>
+                            <!-- Fixed image path -->
+                            <img src="" alt="Luxury Home Elevator - Triangle Clif Bangalore" loading="lazy">
+                            <div class="product-image-overlay">
+                                <i class="fas fa-home"></i>
+                            </div>
                         </div>
                         <div class="product-content">
                             <h3 class="product-title">Home Elevators</h3>
@@ -571,14 +677,18 @@
                                 </div>
                             </div>
                             
-                            <a href="calculator.html" class="btn btn-outline hover-grow">Get Quote</a>
+                            <button class="btn btn-outline hover-grow product-quote-btn">Get Quote</button>
                         </div>
                     </div>
                     
                     <!-- Hospital Elevator -->
                     <div class="product-card" data-category="hospital" id="hospital">
                         <div class="product-image">
-                            <i class="fas fa-hospital"></i>
+                            <!-- Fixed image path -->
+                            <img src="images/hospital-elevator.jpg" alt="Hospital Medical Elevator - Triangle Clif Bangalore" loading="lazy">
+                            <div class="product-image-overlay">
+                                <i class="fas fa-hospital"></i>
+                            </div>
                         </div>
                         <div class="product-content">
                             <h3 class="product-title">Hospital Elevators</h3>
@@ -656,14 +766,18 @@
                                 </div>
                             </div>
                             
-                            <a href="calculator.html" class="btn btn-outline hover-grow">Get Quote</a>
+                            <button class="btn btn-outline hover-grow product-quote-btn">Get Quote</button>
                         </div>
                     </div>
                     
                     <!-- Commercial Elevator -->
                     <div class="product-card" data-category="commercial" id="commercial">
                         <div class="product-image">
-                            <i class="fas fa-building"></i>
+                            <!-- Fixed image path -->
+                            <img src="images/commercial-elevator.jpg" alt="Commercial Office Elevator - Triangle Clif Bangalore" loading="lazy">
+                            <div class="product-image-overlay">
+                                <i class="fas fa-building"></i>
+                            </div>
                         </div>
                         <div class="product-content">
                             <h3 class="product-title">Commercial Elevators</h3>
@@ -689,803 +803,825 @@
                                 </div>
                                 <div class="key-feature-item">
                                     <span class="emoji">👥</span>
-                                    <span>Multi-Stop</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Specification Dropdown -->
-                            <div class="spec-dropdown">
-                                <button class="spec-toggle">
-                                    <span>View Specifications</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="spec-content">
-                                    <div class="spec-grid">
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-users"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Passenger Capacity</h4>
-                                                <p>13-26 Persons</p>
-                                            </div>
+                                            <span>Multi-Stop</span>
                                         </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-tachometer-alt"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Speed</h4>
-                                                <p>1.0 - 4.0 MPS</p>
-                                            </div>
-                                        </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-layer-group"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Stops</h4>
-                                                <p>Up to 50 Stops</p>
-                                            </div>
-                                        </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-bolt"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Power</h4>
-                                                <p>3-Phase AC Supply</p>
+                                    </div>
+                                    
+                                    <!-- Specification Dropdown -->
+                                    <div class="spec-dropdown">
+                                        <button class="spec-toggle">
+                                            <span>View Specifications</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="spec-content">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-users"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Passenger Capacity</h4>
+                                                        <p>13-26 Persons</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-tachometer-alt"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Speed</h4>
+                                                        <p>1.0 - 4.0 MPS</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-layer-group"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Stops</h4>
+                                                        <p>Up to 50 Stops</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-bolt"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Power</h4>
+                                                        <p>3-Phase AC Supply</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <button class="btn btn-outline hover-grow product-quote-btn">Get Quote</button>
                                 </div>
                             </div>
                             
-                            <a href="calculator.html" class="btn btn-outline hover-grow">Get Quote</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Freight Elevator -->
-                    <div class="product-card" data-category="freight" id="freight">
-                        <div class="product-image">
-                            <i class="fas fa-dolly"></i>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Freight Elevators</h3>
-                            <p class="product-description">Heavy-duty elevators for industrial and commercial applications with robust construction and high load capacity for demanding environments.</p>
-                            
-                            <!-- Key Features Emoji List -->
-                            <div class="key-features">
-                                <div class="key-feature-item">
-                                    <span class="emoji">🏋️</span>
-                                    <span>Heavy Duty</span>
+                            <!-- Freight Elevator -->
+                            <div class="product-card" data-category="freight" id="freight">
+                                <div class="product-image">
+                                    <!-- Fixed image path -->
+                                    <img src="images/freight-elevator.jpg" alt="Heavy Duty Freight Elevator - Triangle Clif Bangalore" loading="lazy">
+                                    <div class="product-image-overlay">
+                                        <i class="fas fa-dolly"></i>
+                                    </div>
                                 </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">🛡️</span>
-                                    <span>Robust Build</span>
-                                </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">📏</span>
-                                    <span>Custom Sizes</span>
-                                </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">⚙️</span>
-                                    <span>Industrial Grade</span>
-                                </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">🚪</span>
-                                    <span>Wide Gates</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Specification Dropdown -->
-                            <div class="spec-dropdown">
-                                <button class="spec-toggle">
-                                    <span>View Specifications</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="spec-content">
-                                    <div class="spec-grid">
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-weight-hanging"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Load Capacity</h4>
-                                                <p>1000-5000 KGS</p>
-                                            </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Freight Elevators</h3>
+                                    <p class="product-description">Heavy-duty elevators for industrial and commercial applications with robust construction and high load capacity for demanding environments.</p>
+                                    
+                                    <!-- Key Features Emoji List -->
+                                    <div class="key-features">
+                                        <div class="key-feature-item">
+                                            <span class="emoji">🏋️</span>
+                                            <span>Heavy Duty</span>
                                         </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-tachometer-alt"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Speed</h4>
-                                                <p>0.5 - 1.0 MPS</p>
-                                            </div>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">🛡️</span>
+                                            <span>Robust Build</span>
                                         </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-arrows-alt"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Platform Size</h4>
-                                                <p>Customizable</p>
-                                            </div>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">📏</span>
+                                            <span>Custom Sizes</span>
                                         </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-door-open"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Door Type</h4>
-                                                <p>Industrial Gates</p>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">⚙️</span>
+                                            <span>Industrial Grade</span>
+                                        </div>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">🚪</span>
+                                            <span>Wide Gates</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Specification Dropdown -->
+                                    <div class="spec-dropdown">
+                                        <button class="spec-toggle">
+                                            <span>View Specifications</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="spec-content">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-weight-hanging"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Load Capacity</h4>
+                                                        <p>1000-5000 KGS</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-tachometer-alt"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Speed</h4>
+                                                        <p>0.5 - 1.0 MPS</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-arrows-alt"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Platform Size</h4>
+                                                        <p>Customizable</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-door-open"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Door Type</h4>
+                                                        <p>Industrial Gates</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <button class="btn btn-outline hover-grow product-quote-btn">Get Quote</button>
                                 </div>
                             </div>
                             
-                            <a href="calculator.html" class="btn btn-outline hover-grow">Get Quote</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Accessibility Elevator -->
-                    <div class="product-card" data-category="accessibility" id="accessibility">
-                        <div class="product-image">
-                            <i class="fas fa-wheelchair"></i>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Accessibility Elevators</h3>
-                            <p class="product-description">Designed specifically for accessibility needs with features that ensure easy, safe, and comfortable access for all users.</p>
-                            
-                            <!-- Key Features Emoji List -->
-                            <div class="key-features">
-                                <div class="key-feature-item">
-                                    <span class="emoji">♿</span>
-                                    <span>Wheelchair Friendly</span>
+                            <!-- Accessibility Elevator -->
+                            <div class="product-card" data-category="accessibility" id="accessibility">
+                                <div class="product-image">
+                                    <!-- Fixed image path -->
+                                    <img src="images/accessibility-elevator.jpg" alt="Accessibility Wheelchair Elevator - Triangle Clif Bangalore" loading="lazy">
+                                    <div class="product-image-overlay">
+                                        <i class="fas fa-wheelchair"></i>
+                                    </div>
                                 </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">🔓</span>
-                                    <span>Easy Access</span>
-                                </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">🛡️</span>
-                                    <span>Safety Features</span>
-                                </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">⚡</span>
-                                    <span>Low Power</span>
-                                </div>
-                                <div class="key-feature-item">
-                                    <span class="emoji">🔄</span>
-                                    <span>Simple Controls</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Specification Dropdown -->
-                            <div class="spec-dropdown">
-                                <button class="spec-toggle">
-                                    <span>View Specifications</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="spec-content">
-                                    <div class="spec-grid">
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-users"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Passenger Capacity</h4>
-                                                <p>1-2 Persons</p>
-                                            </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Accessibility Elevators</h3>
+                                    <p class="product-description">Designed specifically for accessibility needs with features that ensure easy, safe, and comfortable access for all users.</p>
+                                    
+                                    <!-- Key Features Emoji List -->
+                                    <div class="key-features">
+                                        <div class="key-feature-item">
+                                            <span class="emoji">♿</span>
+                                            <span>Wheelchair Friendly</span>
                                         </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-tachometer-alt"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Speed</h4>
-                                                <p>0.15 MPS</p>
-                                            </div>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">🔓</span>
+                                            <span>Easy Access</span>
                                         </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-arrows-alt-v"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Travel</h4>
-                                                <p>Up to 12 Mtrs</p>
-                                            </div>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">🛡️</span>
+                                            <span>Safety Features</span>
                                         </div>
-                                        <div class="spec-item">
-                                            <div class="spec-icon">
-                                                <i class="fas fa-door-open"></i>
-                                            </div>
-                                            <div class="spec-details">
-                                                <h4>Door Width</h4>
-                                                <p>800-900 MM</p>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">⚡</span>
+                                            <span>Low Power</span>
+                                        </div>
+                                        <div class="key-feature-item">
+                                            <span class="emoji">🔄</span>
+                                            <span>Simple Controls</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Specification Dropdown -->
+                                    <div class="spec-dropdown">
+                                        <button class="spec-toggle">
+                                            <span>View Specifications</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="spec-content">
+                                            <div class="spec-grid">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-users"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Passenger Capacity</h4>
+                                                        <p>1-2 Persons</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-tachometer-alt"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Speed</h4>
+                                                        <p>0.15 MPS</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-arrows-alt-v"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Travel</h4>
+                                                        <p>Up to 12 Mtrs</p>
+                                                    </div>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon">
+                                                        <i class="fas fa-door-open"></i>
+                                                    </div>
+                                                    <div class="spec-details">
+                                                        <h4>Door Width</h4>
+                                                        <p>800-900 MM</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <button class="btn btn-outline hover-grow product-quote-btn">Get Quote</button>
                                 </div>
                             </div>
-                            
-                            <a href="calculator.html" class="btn btn-outline hover-grow">Get Quote</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- Features Section -->
-        <section class="section features-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Why Choose Triangle Clif</h2>
-                    <p class="section-subtitle">Excellence in every aspect of elevator solutions in Bangalore</p>
-                </div>
-                
-                <div class="features-grid">
-                    <div class="feature-card hover-lift">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
+                <!-- Features Section -->
+                <section class="section features-section">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2 class="section-title">Why Choose Triangle Clif</h2>
+                            <p class="section-subtitle">Excellence in every aspect of elevator solutions in Bangalore</p>
                         </div>
-                        <h3 class="feature-title">Safety First</h3>
-                        <p class="feature-text">Multiple redundant safety systems with emergency communication and seismic detection. Our elevators exceed all international safety standards with advanced fail-safe mechanisms.</p>
-                    </div>
-                    
-                    <div class="feature-card hover-lift">
-                        <div class="feature-icon">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                        <h3 class="feature-title">Smart Technology</h3>
-                        <p class="feature-text">IoT-enabled monitoring, predictive maintenance, and remote diagnostics. Real-time analytics and smart controls optimize performance and prevent downtime.</p>
-                    </div>
-                    
-                    <div class="feature-card hover-lift">
-                        <div class="feature-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3 class="feature-title">Custom Design</h3>
-                        <p class="feature-text">Tailored solutions with customizable finishes to match architectural aesthetics. We work closely with architects and designers to create seamless integration.</p>
-                    </div>
-                    
-                    <div class="feature-card hover-lift">
-                        <div class="feature-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3 class="feature-title">Reliability</h3>
-                        <p class="feature-text">99.9% uptime with robust construction and premium component selection. Our elevators are built to last with minimal maintenance requirements.</p>
-                    </div>
-                    
-                    <div class="feature-card hover-lift">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3 class="feature-title">24/7 Support</h3>
-                        <p class="feature-text">Round-the-clock emergency service with rapid response times. Our certified technicians are always ready to assist with any maintenance needs.</p>
-                    </div>
-                    
-                    <div class="feature-card hover-lift">
-                        <div class="feature-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3 class="feature-title">Energy Efficient</h3>
-                        <p class="feature-text">Regenerative drives reduce energy consumption by up to 40%. Eco-friendly materials and smart energy management systems minimize environmental impact.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Client Logos Section -->
-        <section class="section client-logos-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Trusted by Top Companies in Bangalore</h2>
-                    <p class="section-subtitle">We've provided elevator solutions to some of the most prestigious organizations in the city</p>
-                </div>
-                
-                <div class="client-logos-container">
-                    <div class="client-logos-track" id="clientLogosTrack">
-                        <!-- Client logos will be inserted here by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technology & Safety Section -->
-        <section class="section tech-safety" id="safety">
-            <div class="container">
-                <div class="tech-content">
-                    <div class="tech-text">
-                        <h2 class="section-title">Advanced Technology & Safety</h2>
-                        <p>Our elevators incorporate state-of-the-art technology with multiple redundant safety systems to ensure maximum protection and reliability in all operating conditions.</p>
                         
-                        <div class="tech-list">
-                            <div class="tech-item hover-lift">
-                                <div class="tech-icon">
+                        <div class="features-grid">
+                            <div class="feature-card hover-lift">
+                                <div class="feature-icon">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
-                                <div class="tech-details">
-                                    <h3>Multi-Layer Safety Systems</h3>
-                                    <p>Redundant braking, emergency communication, seismic detection, and overspeed governors ensure maximum passenger safety.</p>
-                                </div>
+                                <h3 class="feature-title">Safety First</h3>
+                                <p class="feature-text">Multiple redundant safety systems with emergency communication and seismic detection. Our elevators exceed all international safety standards with advanced fail-safe mechanisms.</p>
                             </div>
                             
-                            <div class="tech-item hover-lift">
-                                <div class="tech-icon">
+                            <div class="feature-card hover-lift">
+                                <div class="feature-icon">
                                     <i class="fas fa-microchip"></i>
                                 </div>
-                                <div class="tech-details">
-                                    <h3>Smart IoT Integration</h3>
-                                    <p>Real-time monitoring, predictive maintenance algorithms, remote diagnostics, and performance optimization through cloud connectivity.</p>
-                                </div>
+                                <h3 class="feature-title">Smart Technology</h3>
+                                <p class="feature-text">IoT-enabled monitoring, predictive maintenance, and remote diagnostics. Real-time analytics and smart controls optimize performance and prevent downtime.</p>
                             </div>
                             
-                            <div class="tech-item hover-lift">
-                                <div class="tech-icon">
-                                    <i class="fas fa-bolt"></i>
+                            <div class="feature-card hover-lift">
+                                <div class="feature-icon">
+                                    <i class="fas fa-palette"></i>
                                 </div>
-                                <div class="tech-details">
-                                    <h3>Energy Efficient Drives</h3>
-                                    <p>Regenerative drives that recover energy during descent, reducing power consumption by up to 40% compared to conventional systems.</p>
+                                <h3 class="feature-title">Custom Design</h3>
+                                <p class="feature-text">Tailored solutions with customizable finishes to match architectural aesthetics. We work closely with architects and designers to create seamless integration.</p>
+                            </div>
+                            
+                            <div class="feature-card hover-lift">
+                                <div class="feature-icon">
+                                    <i class="fas fa-certificate"></i>
                                 </div>
+                                <h3 class="feature-title">Reliability</h3>
+                                <p class="feature-text">99.9% uptime with robust construction and premium component selection. Our elevators are built to last with minimal maintenance requirements.</p>
+                            </div>
+                            
+                            <div class="feature-card hover-lift">
+                                <div class="feature-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <h3 class="feature-title">24/7 Support</h3>
+                                <p class="feature-text">Round-the-clock emergency service with rapid response times. Our certified technicians are always ready to assist with any maintenance needs.</p>
+                            </div>
+                            
+                            <div class="feature-card hover-lift">
+                                <div class="feature-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h3 class="feature-title">Energy Efficient</h3>
+                                <p class="feature-text">Regenerative drives reduce energy consumption by up to 40%. Eco-friendly materials and smart energy management systems minimize environmental impact.</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="tech-visual">
-                        <div class="safety-progress">
-                            <h3>Safety & Reliability Metrics</h3>
-                            
-                            <div class="progress-item">
-                                <div class="progress-label">
-                                    <span>System Uptime</span>
-                                    <span class="progress-value">99.9%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" data-width="99.9"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="progress-item">
-                                <div class="progress-label">
-                                    <span>Safety Compliance</span>
-                                    <span class="progress-value">100%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" data-width="100"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="progress-item">
-                                <div class="progress-label">
-                                    <span>Customer Satisfaction</span>
-                                    <span class="progress-value">98.7%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" data-width="98.7"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="progress-item">
-                                <div class="progress-label">
-                                    <span>Energy Efficiency</span>
-                                    <span class="progress-value">95%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" data-width="95"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- Services Section -->
-        <section class="section services-section" id="services">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Our Services</h2>
-                    <p class="section-subtitle">Comprehensive elevator solutions from installation to maintenance in Bangalore</p>
-                </div>
-                
-                <div class="services-grid">
-                    <div class="service-card hover-lift">
-                        <div class="service-icon">
-                            <i class="fas fa-tools"></i>
+                <!-- Client Logos Section -->
+                <section class="section client-logos-section">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2 class="section-title">Trusted by Top Companies in Bangalore</h2>
+                            <p class="section-subtitle">We've provided elevator solutions to some of the most prestigious organizations in the city</p>
                         </div>
-                        <h3>Elevator Installation</h3>
-                        <p>Professional installation of all elevator types with precise engineering and minimal disruption to your operations.</p>
-                        <ul class="service-features">
-                            <li>Custom design consultation</li>
-                            <li>Precision installation</li>
-                            <li>Quality assurance testing</li>
-                            <li>Post-installation support</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-card hover-lift">
-                        <div class="service-icon">
-                            <i class="fas fa-clipboard-check"></i>
+                        
+                        <div class="client-logos-container">
+                            <div class="client-logos-track" id="clientLogosTrack">
+                                <!-- Client logos will be inserted here by JavaScript -->
+                            </div>
                         </div>
-                        <h3>Maintenance & AMC</h3>
-                        <p>Annual Maintenance Contracts with scheduled inspections, preventive maintenance, and priority service.</p>
-                        <ul class="service-features">
-                            <li>Scheduled inspections</li>
-                            <li>Preventive maintenance</li>
-                            <li>AMC packages</li>
-                            <li>Priority service</li>
-                        </ul>
                     </div>
-                    
-                    <div class="service-card hover-lift">
-                        <div class="service-icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3>Modernization</h3>
-                        <p>Upgrade existing elevators with latest technology, improved safety features, and energy-efficient components.</p>
-                        <ul class="service-features">
-                            <li>Technology upgrades</li>
-                            <li>Safety enhancements</li>
-                            <li>Energy efficiency retrofits</li>
-                            <li>Cosmetic updates</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-card hover-lift">
-                        <div class="service-icon">
-                            <i class="fas fa-ambulance"></i>
-                        </div>
-                        <h3>Repair & Emergency</h3>
-                        <p>24/7 emergency repair services with rapid response times and certified technicians for all elevator brands.</p>
-                        <ul class="service-features">
-                            <li>24/7 emergency service</li>
-                            <li>Rapid response</li>
-                            <li>Brand-certified technicians</li>
-                            <li>Genuine spare parts</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- Industries Section -->
-        <section class="section industries-section" id="industries">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Industries We Serve</h2>
-                    <p class="section-subtitle">Providing specialized elevator solutions across diverse sectors in Bangalore</p>
-                </div>
-                
-                <div class="industries-grid">
-                    <div class="industry-card hover-lift">
-                        <div class="industry-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>Residential</h3>
-                        <p>Luxury apartments, condominiums, private homes, and residential complexes with customized elevator solutions.</p>
-                    </div>
-                    
-                    <div class="industry-card hover-lift">
-                        <div class="industry-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3>Commercial</h3>
-                        <p>Office towers, shopping malls, retail centers, and commercial buildings with high-traffic elevator systems.</p>
-                    </div>
-                    
-                    <div class="industry-card hover-lift">
-                        <div class="industry-icon">
-                            <i class="fas fa-hospital"></i>
-                        </div>
-                        <h3>Healthcare</h3>
-                        <p>Hospitals, clinics, medical centers, and healthcare facilities with specialized medical-grade elevators.</p>
-                    </div>
-                    
-                    <div class="industry-card hover-lift">
-                        <div class="industry-icon">
-                            <i class="fas fa-hotel"></i>
-                        </div>
-                        <h3>Hospitality</h3>
-                        <p>Hotels, resorts, restaurants, and entertainment venues with stylish and efficient elevator systems.</p>
-                    </div>
-                    
-                    <div class="industry-card hover-lift">
-                        <div class="industry-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <h3>Industrial</h3>
-                        <p>Factories, warehouses, manufacturing plants, and industrial facilities with heavy-duty freight elevators.</p>
-                    </div>
-                    
-                    <div class="industry-card hover-lift">
-                        <div class="industry-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Educational</h3>
-                        <p>Schools, universities, colleges, and educational institutions with safe and reliable elevator systems.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="section cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Elevate Your Space in Bangalore?</h2>
-                    <p>Contact our experts for a customized solution that fits your specific requirements and budget.</p>
-                    <div class="cta-buttons">
-                        <a href="calculator.html" class="btn btn-primary btn-large pulse-animation">
-                            <i class="fas fa-calculator"></i> Get Free Quote
-                        </a>
-                        <a href="tel:+917019756807" class="btn btn-secondary btn-large">
-                            <i class="fas fa-phone-alt"></i> Call: +91 70197 56807
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section contact-section" id="contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Contact Us</h2>
-                    <p class="section-subtitle">Get in touch for inquiries, quotes, or support in Bangalore</p>
-                </div>
-                
-                <div class="contact-content">
-                    <div class="contact-form-container">
-                        <form id="contactForm" class="contact-form">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required placeholder="Enter your name">
+                <!-- Technology & Safety Section -->
+                <section class="section tech-safety" id="safety">
+                    <div class="container">
+                        <div class="tech-content">
+                            <div class="tech-text">
+                                <h2 class="section-title">Advanced Technology & Safety</h2>
+                                <p>Our elevators incorporate state-of-the-art technology with multiple redundant safety systems to ensure maximum protection and reliability in all operating conditions.</p>
+                                
+                                <div class="tech-list">
+                                    <div class="tech-item hover-lift">
+                                        <div class="tech-icon">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <div class="tech-details">
+                                            <h3>Multi-Layer Safety Systems</h3>
+                                            <p>Redundant braking, emergency communication, seismic detection, and overspeed governors ensure maximum passenger safety.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="tech-item hover-lift">
+                                        <div class="tech-icon">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <div class="tech-details">
+                                            <h3>Smart IoT Integration</h3>
+                                            <p>Real-time monitoring, predictive maintenance algorithms, remote diagnostics, and performance optimization through cloud connectivity.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="tech-item hover-lift">
+                                        <div class="tech-icon">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <div class="tech-details">
+                                            <h3>Energy Efficient Drives</h3>
+                                            <p>Regenerative drives that recover energy during descent, reducing power consumption by up to 40% compared to conventional systems.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                            <div class="tech-visual">
+                                <div class="safety-progress">
+                                    <h3>Safety & Reliability Metrics</h3>
+                                    
+                                    <div class="progress-item">
+                                        <div class="progress-label">
+                                            <span>System Uptime</span>
+                                            <span class="progress-value">99.9%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" data-width="99.9"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="progress-item">
+                                        <div class="progress-label">
+                                            <span>Safety Compliance</span>
+                                            <span class="progress-value">100%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" data-width="100"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="progress-item">
+                                        <div class="progress-label">
+                                            <span>Customer Satisfaction</span>
+                                            <span class="progress-value">98.7%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" data-width="98.7"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="progress-item">
+                                        <div class="progress-label">
+                                            <span>Energy Efficiency</span>
+                                            <span class="progress-value">95%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" data-width="95"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section class="section services-section" id="services">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2 class="section-title">Our Services</h2>
+                            <p class="section-subtitle">Comprehensive elevator solutions from installation to maintenance in Bangalore</p>
+                        </div>
+                        
+                        <div class="services-grid">
+                            <div class="service-card hover-lift">
+                                <div class="service-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h3>Elevator Installation</h3>
+                                <p>Professional installation of all elevator types with precise engineering and minimal disruption to your operations.</p>
+                                <ul class="service-features">
+                                    <li>Custom design consultation</li>
+                                    <li>Precision installation</li>
+                                    <li>Quality assurance testing</li>
+                                    <li>Post-installation support</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="service-card hover-lift">
+                                <div class="service-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <h3>Maintenance & AMC</h3>
+                                <p>Annual Maintenance Contracts with scheduled inspections, preventive maintenance, and priority service.</p>
+                                <ul class="service-features">
+                                    <li>Scheduled inspections</li>
+                                    <li>Preventive maintenance</li>
+                                    <li>AMC packages</li>
+                                    <li>Priority service</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="service-card hover-lift">
+                                <div class="service-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <h3>Modernization</h3>
+                                <p>Upgrade existing elevators with latest technology, improved safety features, and energy-efficient components.</p>
+                                <ul class="service-features">
+                                    <li>Technology upgrades</li>
+                                    <li>Safety enhancements</li>
+                                    <li>Energy efficiency retrofits</li>
+                                    <li>Cosmetic updates</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="service-card hover-lift">
+                                <div class="service-icon">
+                                    <i class="fas fa-ambulance"></i>
+                                </div>
+                                <h3>Repair & Emergency</h3>
+                                <p>24/7 emergency repair services with rapid response times and certified technicians for all elevator brands.</p>
+                                <ul class="service-features">
+                                    <li>24/7 emergency service</li>
+                                    <li>Rapid response</li>
+                                    <li>Brand-certified technicians</li>
+                                    <li>Genuine spare parts</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Industries Section -->
+                <section class="section industries-section" id="industries">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2 class="section-title">Industries We Serve</h2>
+                            <p class="section-subtitle">Providing specialized elevator solutions across diverse sectors in Bangalore</p>
+                        </div>
+                        
+                        <div class="industries-grid">
+                            <div class="industry-card hover-lift">
+                                <div class="industry-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h3>Residential</h3>
+                                <p>Luxury apartments, condominiums, private homes, and residential complexes with customized elevator solutions.</p>
+                            </div>
+                            
+                            <div class="industry-card hover-lift">
+                                <div class="industry-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3>Commercial</h3>
+                                <p>Office towers, shopping malls, retail centers, and commercial buildings with high-traffic elevator systems.</p>
+                            </div>
+                            
+                            <div class="industry-card hover-lift">
+                                <div class="industry-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <h3>Healthcare</h3>
+                                <p>Hospitals, clinics, medical centers, and healthcare facilities with specialized medical-grade elevators.</p>
+                            </div>
+                            
+                            <div class="industry-card hover-lift">
+                                <div class="industry-icon">
+                                    <i class="fas fa-hotel"></i>
+                                </div>
+                                <h3>Hospitality</h3>
+                                <p>Hotels, resorts, restaurants, and entertainment venues with stylish and efficient elevator systems.</p>
+                            </div>
+                            
+                            <div class="industry-card hover-lift">
+                                <div class="industry-icon">
+                                    <i class="fas fa-industry"></i>
+                                </div>
+                                <h3>Industrial</h3>
+                                <p>Factories, warehouses, manufacturing plants, and industrial facilities with heavy-duty freight elevators.</p>
+                            </div>
+                            
+                            <div class="industry-card hover-lift">
+                                <div class="industry-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>Educational</h3>
+                                <p>Schools, universities, colleges, and educational institutions with safe and reliable elevator systems.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Section -->
+                <section class="section cta-section">
+                    <div class="container">
+                        <div class="cta-content">
+                            <h2>Ready to Elevate Your Space in Bangalore?</h2>
+                            <p>Contact our experts for a customized solution that fits your specific requirements and budget.</p>
+                            <div class="cta-buttons">
+                                <button class="btn btn-primary btn-large pulse-animation" id="ctaQuoteBtn">
+                                    <i class="fas fa-calculator"></i> Get Free Quote
+                                </button>
+                                <a href="tel:+917019756807" class="btn btn-secondary btn-large">
+                                    <i class="fas fa-phone-alt"></i> Call: +91 7338387666
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section class="section contact-section" id="contact">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2 class="section-title">Contact Us</h2>
+                            <p class="section-subtitle">Get in touch for inquiries, quotes, or support in Bangalore</p>
+                        </div>
+                        
+                        <div class="contact-content">
+                            <div class="contact-form-container">
+                                <form id="contactForm" class="contact-form" target="_blank" action="https://formsubmit.co/triangleclifelevators2000@gmail.com" method="POST">
+                                    <!-- FormSubmit Hidden Fields -->
+                                    <input type="hidden" name="_subject" value="📧 New Contact Form Submission - Triangle Clif Elevators">
+                                    <input type="hidden" name="_template" value="table">
+                                    <input type="hidden" name="_captcha" value="false">
+                                    <input type="hidden" name="_next" value="https://triangleclif.com/thank-you.html">
+                                    <input type="hidden" name="_autoresponse" value="Thank you for contacting Triangle Clif Elevators! We have received your message and our team will get back to you within 24 hours. For immediate assistance, call +91 70197 56807.">
+                                    <input type="hidden" name="_cc" value="info@triangleclif.com">
+                                    
+                                    <!-- Honeypot field -->
+                                    <input type="text" name="_honey" style="display:none">
+                                    
+                                    <div class="form-group">
+                                        <label for="name">Full Name *</label>
+                                        <input type="text" id="name" name="Full Name" required placeholder="Enter your name">
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="email">Email Address *</label>
+                                            <input type="email" id="email" name="Email Address" required placeholder="Enter your email">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number *</label>
+                                            <input type="tel" id="phone" name="Phone Number" required placeholder="Enter your phone number" value="+91 ">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="location">Location *</label>
+                                        <input type="text" id="location" name="Location" required placeholder="Enter your location in Bangalore">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="interest">Product Interest</label>
+                                        <select id="interest" name="Product Interest">
+                                            <option value="">Select an option</option>
+                                            <option value="Passenger Elevators">Passenger Elevators</option>
+                                            <option value="Home Elevators">Home Elevators</option>
+                                            <option value="Hospital Elevators">Hospital Elevators</option>
+                                            <option value="Commercial Elevators">Commercial Elevators</option>
+                                            <option value="Freight Elevators">Freight Elevators</option>
+                                            <option value="Accessibility Elevators">Accessibility Elevators</option>
+                                            <option value="Maintenance Service">Maintenance Service</option>
+                                            <option value="Consultation">General Consultation</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="message">Your Message *</label>
+                                        <textarea id="message" name="Message" rows="5" required placeholder="Tell us about your elevator needs..."></textarea>
+                                    </div>
+                                    
+                                    <!-- Source tracking -->
+                                    <input type="hidden" name="Source" value="Contact Form">
+                                    <input type="hidden" name="Page URL" value="" id="contactPageUrl">
+                                    <input type="hidden" name="Timestamp" value="" id="contactTimestamp">
+                                    
+                                    <button type="submit" class="btn btn-primary btn-full hover-grow">Send Message</button>
+                                    <div class="form-message" id="formMessage"></div>
+                                </form>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <div class="info-item hover-lift">
+                                    <div class="info-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <h3>Our Bangalore Office</h3>
+                                        <p>Triangle Clif Elevators<br>#123, MG Road, Bangalore - 560001<br>Karnataka, India</p>
+                                    </div>
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="phone">Phone Number *</label>
-                                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" value="+91 ">
+                                <div class="info-item hover-lift">
+                                    <div class="info-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <h3>Phone Numbers</h3>
+                                        <p>+91 7338387666<br>+91 7892099191</p>
+                                        <a href="tel:+917338387666" class="call-now">
+                                            <i class="fas fa-phone-alt"></i> Call Now
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item hover-lift">
+                                    <div class="info-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <h3>Email Address</h3>
+                                        <p>triangleclifelevators2000@gmail.com<br>triangleclifelevators2000@gmail.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item hover-lift">
+                                    <div class="info-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="info-details">
+                                        <h3>Business Hours</h3>
+                                        <p>Monday - Friday: 9:00 AM - 7:00 PM<br>Saturday: 10:00 AM - 5:00 PM<br>Emergency Support: 24/7</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="map-container hover-lift">
+                                    <div class="map-placeholder">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        <p>Bangalore Office Location</p>
+                                        <small>#96/127, 1st floor, 7th Main Road, Jayanagar 4th Block, Bangalore - 560041</small>
+                                        <a href="https://maps.app.goo.gl/swaBrJWQDkRB5hME6?g_st=ipc" target="_blank" class="btn btn-outline btn-small">
+                                            <i class="fas fa-directions"></i> Get Directions
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-section">
+                            <div class="footer-logo">
+                                <!-- Fixed image path -->
+                                <img src="images/logo-footer.png" alt="Triangle Clif Elevators Logo" class="footer-logo-image">
+                                <div class="logo-text">
+                                    <span class="logo-main">TRIANGLE CLIF ELEVATORS</span>
+                                    <span class="logo-sub">BANGALORE | EST. 2005</span>
+                                </div>
+                            </div>
+                            <p class="footer-about">Bangalore's premier provider of premium elevator solutions with over 25 years of industry experience, committed to safety, innovation, and customer satisfaction.</p>
+                            
+                            <div class="footer-contact-info">
+                                <div class="footer-contact-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <a href="tel:+917019756807">+91 7338387666</a>
+                                </div>
+                                <div class="footer-contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:info@triangleclif.com">triangleclifelevators2000@gmail.com</a>
+                                </div>
+                                <div class="footer-contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>#96/127, 1st floor, 7th Main Road, Jayanagar 4th Block, Bangalore - 560041</span>
                                 </div>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="location">Location *</label>
-                                <input type="text" id="location" name="location" required placeholder="Enter your location in Bangalore">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="interest">Product Interest</label>
-                                <select id="interest" name="interest">
-                                    <option value="">Select an option</option>
-                                    <option value="passenger">Passenger Elevators</option>
-                                    <option value="home">Home Elevators</option>
-                                    <option value="hospital">Hospital Elevators</option>
-                                    <option value="commercial">Commercial Elevators</option>
-                                    <option value="freight">Freight Elevators</option>
-                                    <option value="accessibility">Accessibility Elevators</option>
-                                    <option value="service">Maintenance Service</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Your Message *</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Tell us about your elevator needs..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary btn-full hover-grow">Send Message</button>
-                            <div class="form-message" id="formMessage"></div>
-                        </form>
-                    </div>
-                    
-                    <div class="contact-info">
-                        <div class="info-item hover-lift">
-                            <div class="info-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="info-details">
-                                <h3>Our Bangalore Office</h3>
-                                <p>Triangle Clif Elevators<br>#123, MG Road, Bangalore - 560001<br>Karnataka, India</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-item hover-lift">
-                            <div class="info-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="info-details">
-                                <h3>Phone Numbers</h3>
-                                <p>+91 70197 56807<br>+91 80 2555 1234</p>
-                                <a href="tel:+917019756807" class="call-now">
-                                    <i class="fas fa-phone-alt"></i> Call Now
+                            <div class="social-links">
+                                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-icon">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="social-icon">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="https://wa.me/917338387666?text=Hi%20Triangle%20Clif%2C%20I%27m%20interested%20in%20your%20elevator%20solutions%20in%20Bangalore.%20Please%20send%20me%20more%20information%20and%20a%20quote." 
+                                   target="_blank" aria-label="WhatsApp" class="social-icon whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
                                 </a>
                             </div>
                         </div>
                         
-                        <div class="info-item hover-lift">
-                            <div class="info-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="info-details">
-                                <h3>Email Address</h3>
-                                <p>info@triangleclif.com<br>sales@triangleclif.com</p>
-                            </div>
+                        <div class="footer-section">
+                            <h3 class="footer-title">Quick Links</h3>
+                            <ul class="footer-links">
+                                <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                                <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                                <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                                <li><a href="#safety"><i class="fas fa-chevron-right"></i> Safety</a></li>
+                                <li><a href="#industries"><i class="fas fa-chevron-right"></i> Industries</a></li>
+                                <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                            </ul>
                         </div>
                         
-                        <div class="info-item hover-lift">
-                            <div class="info-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="info-details">
-                                <h3>Business Hours</h3>
-                                <p>Monday - Friday: 9:00 AM - 7:00 PM<br>Saturday: 10:00 AM - 5:00 PM<br>Emergency Support: 24/7</p>
-                            </div>
+                        <div class="footer-section">
+                            <h3 class="footer-title">Our Products</h3>
+                            <ul class="footer-links">
+                                <li><a href="#passenger"><i class="fas fa-chevron-right"></i> Passenger Elevators</a></li>
+                                <li><a href="#home-elevators"><i class="fas fa-chevron-right"></i> Home Elevators</a></li>
+                                <li><a href="#hospital"><i class="fas fa-chevron-right"></i> Hospital Elevators</a></li>
+                                <li><a href="#commercial"><i class="fas fa-chevron-right"></i> Commercial Elevators</a></li>
+                                <li><a href="#freight"><i class="fas fa-chevron-right"></i> Freight Elevators</a></li>
+                                <li><a href="#accessibility"><i class="fas fa-chevron-right"></i> Accessibility Elevators</a></li>
+                            </ul>
                         </div>
                         
-                        <div class="map-container hover-lift">
-                            <div class="map-placeholder">
-                                <i class="fas fa-map-marked-alt"></i>
-                                <p>Bangalore Office Location</p>
-                                <small>MG Road, Bangalore - 560001</small>
-                                <a href="https://maps.google.com/?q=MG+Road+Bangalore" target="_blank" class="btn btn-outline btn-small">
-                                    <i class="fas fa-directions"></i> Get Directions
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-arrow-up"></i>
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="logo-text">
-                            <span class="logo-main">TRIANGLE CLIF ELEVATORS</span>
-                            <span class="logo-sub">BANGALORE | EST. 1995</span>
-                        </div>
-                    </div>
-                    <p class="footer-about">Bangalore's premier provider of premium elevator solutions with over 25 years of industry experience, committed to safety, innovation, and customer satisfaction.</p>
-                    
-                    <div class="footer-contact-info">
-                        <div class="footer-contact-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <a href="tel:+917019756807">+91 70197 56807</a>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@triangleclif.com">info@triangleclif.com</a>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>MG Road, Bangalore - 560001</span>
+                        <div class="footer-section">
+                            <h3 class="footer-title">Our Services</h3>
+                            <ul class="footer-links">
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Elevator Installation</a></li>
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance & AMC</a></li>
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Modernization</a></li>
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Repair & Emergency</a></li>
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Custom Design</a></li>
+                                <li><a href="#services"><i class="fas fa-chevron-right"></i> Free Consultation</a></li>
+                            </ul>
                         </div>
                     </div>
                     
-                    <div class="social-links">
-                        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="social-icon">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://wa.me/917019756807?text=Hi%20Triangle%20Clif%2C%20I%27m%20interested%20in%20your%20elevator%20solutions%20in%20Bangalore.%20Please%20send%20me%20more%20information%20and%20a%20quote." 
-                           target="_blank" aria-label="WhatsApp" class="social-icon whatsapp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                    <div class="footer-bottom">
+                        <div class="copyright">
+                            <p>&copy; <span id="currentYear"></span> Triangle Clif Elevators, Bangalore. All rights reserved.</p>
+                            <p class="design-credit">Website designed by <strong>JRS Creative Studio</strong> | EST. 2005</p>
+                        </div>
+                        
+                        <div class="footer-legal">
+                            <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                            <a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a>
+                            <a href="#"><i class="fas fa-sitemap"></i> Sitemap</a>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#safety"><i class="fas fa-chevron-right"></i> Safety</a></li>
-                        <li><a href="#industries"><i class="fas fa-chevron-right"></i> Industries</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3 class="footer-title">Our Products</h3>
-                    <ul class="footer-links">
-                        <li><a href="#passenger"><i class="fas fa-chevron-right"></i> Passenger Elevators</a></li>
-                        <li><a href="#home-elevators"><i class="fas fa-chevron-right"></i> Home Elevators</a></li>
-                        <li><a href="#hospital"><i class="fas fa-chevron-right"></i> Hospital Elevators</a></li>
-                        <li><a href="#commercial"><i class="fas fa-chevron-right"></i> Commercial Elevators</a></li>
-                        <li><a href="#freight"><i class="fas fa-chevron-right"></i> Freight Elevators</a></li>
-                        <li><a href="#accessibility"><i class="fas fa-chevron-right"></i> Accessibility Elevators</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3 class="footer-title">Our Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Elevator Installation</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance & AMC</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Modernization</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Repair & Emergency</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Custom Design</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Free Consultation</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <p>&copy; <span id="currentYear"></span> Triangle Clif Elevators, Bangalore. All rights reserved.</p>
-                    <p class="design-credit">Website designed by <strong>JRS Creative Studio</strong> | EST. 2025</p>
-                </div>
-                
-                <div class="footer-legal">
-                    <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-                    <a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a>
-                    <a href="#"><i class="fas fa-sitemap"></i> Sitemap</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+            </footer>
 
-    <!-- Schema Markup (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Triangle Clif Elevators",
-      "description": "Premium elevator solutions in Bangalore for residential, commercial, and industrial applications.",
-      "url": "https://www.triangleclif.com",
-      "logo": "https://www.triangleclif.com/logo.png",
-      "telephone": "+91-70197-56807",
-      "email": "info@triangleclif.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "MG Road",
-        "addressLocality": "Bangalore",
-        "addressRegion": "Karnataka",
-        "postalCode": "560001",
-        "addressCountry": "IN"
-      },
-      "openingHours": "Mo-Fr 09:00-19:00, Sa 10:00-17:00",
-      "priceRange": "$$$",
-      "sameAs": [
-        "https://www.facebook.com/triangleclif",
-        "https://www.twitter.com/triangleclif",
-        "https://www.linkedin.com/company/triangleclif",
-        "https://www.instagram.com/triangleclif"
-      ]
-    }
-    </script>
+            <!-- Schema Markup (JSON-LD) -->
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Triangle Clif Elevators",
+              "description": "Premium elevator solutions in Bangalore for residential, commercial, and industrial applications.",
+              "url": "https://www.triangleclif.com",
+              "logo": "https://www.triangleclif.com/images/logo.png",
+              "telephone": "+91-7338387666",
+              "email": "triangleclifelevators2000@gmail.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "#96/127, 1st floor, 7th Main Road, Jayanagar 4th Block, Bangalore",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "560041",
+                "addressCountry": "IN"
+              },
+              "openingHours": "Mo-Fr 09:00-19:00, Sa 10:00-17:00",
+              "priceRange": "$$$",
+              "sameAs": [
+                "https://www.facebook.com/triangleclif",
+                "https://www.twitter.com/triangleclif",
+                "https://www.linkedin.com/company/triangleclif",
+                "https://www.instagram.com/triangleclif"
+              ]
+            }
+            </script>
 
-    <script src="script.js"></script>
-</body>
-
-</html>
+            <script src="script.js"></script>
+        </body>
+        </html>
