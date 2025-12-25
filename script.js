@@ -229,14 +229,17 @@ function initQuotePopup() {
                 }
             }
             
-            // Validate phone number format
+            // Validate phone number format - FIXED
             const phoneField = document.getElementById('popupPhone');
             if (phoneField && phoneField.value.trim()) {
                 const phone = phoneField.value.trim();
+                // Remove all non-digits
                 const cleanedPhone = phone.replace(/\D/g, '');
-                if (cleanedPhone.length < 10) {
+                // Remove country code (91) if present and check for 10 digits
+                const digitsOnly = cleanedPhone.replace(/^91/, '');
+                if (digitsOnly.length !== 10) {
                     e.preventDefault();
-                    showPopupMessage('Please enter a valid phone number with at least 10 digits.', 'error');
+                    showPopupMessage('Please enter a valid 10-digit phone number.', 'error');
                     phoneField.style.borderColor = '#d32f2f';
                     setTimeout(() => {
                         phoneField.style.borderColor = '';
@@ -298,30 +301,39 @@ function initQuotePopup() {
         }
     }
     
-    // Phone number formatting for popup
+    // Phone number formatting for popup - FIXED
     const popupPhoneInput = document.getElementById('popupPhone');
     if (popupPhoneInput) {
+        // Set default value
+        if (!popupPhoneInput.value.trim() || popupPhoneInput.value === '+91 ') {
+            popupPhoneInput.value = '+91 ';
+        }
+        
         popupPhoneInput.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             
-            // Remove leading 91 if present
-            if (value.startsWith('91')) {
-                value = value.substring(2);
-            }
-            
-            // Format with +91 prefix and limit to 10 digits
             if (value.length > 0) {
-                value = '+91 ' + value.substring(0, 10);
+                // If starts with 91, keep it, otherwise add +91
+                if (!value.startsWith('91')) {
+                    value = '91' + value;
+                }
+                // Keep only first 12 digits (91 + 10 digits)
+                value = value.substring(0, 12);
+                // Format with +91 prefix
+                const formatted = '+91 ' + value.substring(2);
+                e.target.value = formatted;
+            } else {
+                e.target.value = '+91 ';
             }
-            
-            e.target.value = value;
         });
         
-        // Ensure format on blur if user typed without +91
+        // Ensure format on blur
         popupPhoneInput.addEventListener('blur', function(e) {
             let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 10 && !e.target.value.startsWith('+91')) {
-                e.target.value = '+91 ' + value.substring(0, 10);
+            if (value.length > 0 && !value.startsWith('91')) {
+                value = '91' + value;
+                value = value.substring(0, 12);
+                e.target.value = '+91 ' + value.substring(2);
             }
         });
     }
@@ -741,14 +753,17 @@ function initContactForm() {
             }
         }
         
-        // Validate phone number format
+        // Validate phone number format - FIXED
         const phoneField = document.getElementById('phone');
         if (phoneField && phoneField.value.trim()) {
             const phone = phoneField.value.trim();
+            // Remove all non-digits
             const cleanedPhone = phone.replace(/\D/g, '');
-            if (cleanedPhone.length < 10) {
+            // Remove country code (91) if present and check for 10 digits
+            const digitsOnly = cleanedPhone.replace(/^91/, '');
+            if (digitsOnly.length !== 10) {
                 e.preventDefault();
-                showContactFormMessage('Please enter a valid phone number with at least 10 digits.', 'error');
+                showContactFormMessage('Please enter a valid 10-digit phone number.', 'error');
                 phoneField.style.borderColor = '#d32f2f';
                 setTimeout(() => {
                     phoneField.style.borderColor = '';
@@ -799,59 +814,97 @@ function initContactForm() {
     }
 }
 
-// Phone number formatting for all phone inputs
+// Phone number formatting for all phone inputs - FIXED VERSION
 function initPhoneFormatting() {
     // Format phone input in contact form
     const contactPhoneInput = document.getElementById('phone');
     if (contactPhoneInput) {
+        // Set default value
+        if (!contactPhoneInput.value.trim() || contactPhoneInput.value === '+91 ') {
+            contactPhoneInput.value = '+91 ';
+        }
+        
         contactPhoneInput.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             
-            // Remove leading 91 if present
-            if (value.startsWith('91')) {
-                value = value.substring(2);
-            }
-            
-            // Format with +91 prefix and limit to 10 digits
             if (value.length > 0) {
-                value = '+91 ' + value.substring(0, 10);
+                // If starts with 91, keep it, otherwise add +91
+                if (!value.startsWith('91')) {
+                    value = '91' + value;
+                }
+                // Keep only first 12 digits (91 + 10 digits)
+                value = value.substring(0, 12);
+                // Format with +91 prefix
+                const formatted = '+91 ' + value.substring(2);
+                e.target.value = formatted;
+            } else {
+                e.target.value = '+91 ';
             }
-            
-            e.target.value = value;
         });
         
-        // Ensure format on blur if user typed without +91
+        // Ensure format on blur
         contactPhoneInput.addEventListener('blur', function(e) {
             let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 10 && !e.target.value.startsWith('+91')) {
-                e.target.value = '+91 ' + value.substring(0, 10);
+            if (value.length > 0 && !value.startsWith('91')) {
+                value = '91' + value;
+                value = value.substring(0, 12);
+                e.target.value = '+91 ' + value.substring(2);
+            }
+        });
+    }
+    
+    // Format popup phone input (already handled in initQuotePopup, but for safety)
+    const popupPhoneInput = document.getElementById('popupPhone');
+    if (popupPhoneInput && !popupPhoneInput.hasAttribute('data-formatted')) {
+        popupPhoneInput.setAttribute('data-formatted', 'true');
+        
+        // Set default value
+        if (!popupPhoneInput.value.trim() || popupPhoneInput.value === '+91 ') {
+            popupPhoneInput.value = '+91 ';
+        }
+        
+        popupPhoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 0) {
+                if (!value.startsWith('91')) {
+                    value = '91' + value;
+                }
+                value = value.substring(0, 12);
+                const formatted = '+91 ' + value.substring(2);
+                e.target.value = formatted;
+            } else {
+                e.target.value = '+91 ';
             }
         });
     }
     
     // Format any other phone inputs that might exist
-    const otherPhoneInputs = document.querySelectorAll('input[type="tel"]:not(#popupPhone):not(#phone)');
+    const otherPhoneInputs = document.querySelectorAll('input[type="tel"]:not(#popupPhone):not(#phone):not([data-formatted])');
     otherPhoneInputs.forEach(input => {
+        input.setAttribute('data-formatted', 'true');
+        
+        // Set default value
+        if (!input.value.trim() || input.value === '+91 ') {
+            input.value = '+91 ';
+        }
+        
         input.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             
-            if (value.startsWith('91')) {
-                value = value.substring(2);
-            }
-            
             if (value.length > 0) {
-                value = '+91 ' + value.substring(0, 10);
+                if (!value.startsWith('91')) {
+                    value = '91' + value;
+                }
+                value = value.substring(0, 12);
+                const formatted = '+91 ' + value.substring(2);
+                e.target.value = formatted;
+            } else {
+                e.target.value = '+91 ';
             }
-            
-            e.target.value = value;
         });
     });
 }
-
-// Initialize phone formatting on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-    initPhoneFormatting();
-});
 
 // Optional: Add a function to check if redirect pages exist (for development)
 function checkRedirectPages() {
