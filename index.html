@@ -48,15 +48,15 @@
                 <p>Fill in your details and we'll redirect you to our detailed calculator</p>
             </div>
             
-            <!-- FormSubmit Form -->
-            <form id="quoteForm" class="popup-form" target="_blank" action="https://formsubmit.co/triangleclifelevators2000@gmail.com" method="POST">
-                <!-- FormSubmit Hidden Fields -->
-                <input type="hidden" name="_subject" value="📞 New Quote Request - Triangle Clif Elevators">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://triangleclifelevators.com/calculator.html">
-                <input type="hidden" name="_autoresponse" value="Thank you for contacting Triangle Clif Elevators! Our elevator expert will call you within 30 minutes to discuss your requirements and provide a customized quote. For immediate assistance, call +91 70197 56807. Looking forward to elevating your space!">
-                <input type="hidden" name="_cc" value="sales@triangleclif.com">
+           <!-- FormSubmit Form - FIXED for Compatibility -->
+<form id="quoteForm" class="popup-form" action="https://formsubmit.co/triangleclifelevators2000@gmail.com" method="POST">
+    <!-- FormSubmit Hidden Fields - FIXED -->
+    <input type="hidden" name="_subject" value="📞 New Quote Request - Triangle Clif Elevators">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://triangleclif.com/thank-you.html">
+    <input type="hidden" name="_autoresponse" value="Thank you for contacting Triangle Clif Elevators! Our elevator expert will call you within 30 minutes to discuss your requirements and provide a customized quote. For immediate assistance, call +91 70197 56807. Looking forward to elevating your space!">
+    <input type="hidden" name="_cc" value="sales@triangleclif.com">
                 
                 <!-- Optional: Add honeypot field for spam prevention -->
                 <input type="text" name="_honey" style="display:none">
@@ -121,8 +121,8 @@
                 <input type="hidden" name="Timestamp" value="" id="timestamp">
                 
                 <button type="submit" class="btn btn-primary btn-full btn-large">
-                    <i class="fas fa-arrow-right"></i> Submit & Proceed to Calculator
-                </button>
+    <i class="fas fa-arrow-right"></i> Submit & Proceed to Calculator
+</button>
                 
                 <div class="form-message" id="popupMessageDisplay"></div>
             </form>
@@ -1625,5 +1625,6 @@
             <script src="script.js"></script>
         </body>
         </html>
+
 
 
