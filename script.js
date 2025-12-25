@@ -1,5 +1,5 @@
-// script.js - SIMPLIFIED VERSION - FormSubmit focused
-// Removed complex validation that was blocking FormSubmit
+// script.js - Simplified version without popup forms
+// Complete with proper navigation and animations
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initApp() {
     // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
-    
-    // Set page URLs for forms
-    setFormTrackingData();
     
     // Initialize loading screen
     initLoadingScreen();
@@ -32,9 +29,6 @@ function initApp() {
     // Initialize progress bars
     initProgressBars();
     
-    // Initialize contact form (SIMPLIFIED)
-    initContactForm();
-    
     // Initialize smooth scrolling for anchor links
     initSmoothScrolling();
     
@@ -46,30 +40,9 @@ function initApp() {
     
     // Initialize client logos
     initClientLogos();
-    
-    // Initialize quote popup (SIMPLIFIED)
-    initQuotePopup();
 }
 
-// Set form tracking data
-function setFormTrackingData() {
-    const currentUrl = window.location.href;
-    const timestamp = new Date().toISOString();
-    
-    // Set for quote popup
-    const pageUrlField = document.getElementById('pageUrl');
-    const timestampField = document.getElementById('timestamp');
-    if (pageUrlField) pageUrlField.value = currentUrl;
-    if (timestampField) timestampField.value = timestamp;
-    
-    // Set for contact form
-    const contactPageUrl = document.getElementById('contactPageUrl');
-    const contactTimestamp = document.getElementById('contactTimestamp');
-    if (contactPageUrl) contactPageUrl.value = currentUrl;
-    if (contactTimestamp) contactTimestamp.value = timestamp;
-}
-
-// Loading Screen (UNCHANGED)
+// Loading Screen
 function initLoadingScreen() {
     const loadingScreen = document.getElementById('loadingScreen');
     const progressFill = document.querySelector('.progress-fill-loading');
@@ -108,156 +81,7 @@ function initLoadingScreen() {
     }, 100);
 }
 
-// Initialize Quote Popup - SIMPLIFIED VERSION
-function initQuotePopup() {
-    const quotePopup = document.getElementById('quotePopup');
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupClose = document.getElementById('popupClose');
-    const quoteForm = document.getElementById('quoteForm');
-    
-    // Get all quote buttons
-    const quotePopupBtn = document.getElementById('quotePopupBtn');
-    const heroQuoteBtn = document.getElementById('heroQuoteBtn');
-    const aboutQuoteBtn = document.getElementById('aboutQuoteBtn');
-    const ctaQuoteBtn = document.getElementById('ctaQuoteBtn');
-    const productQuoteBtns = document.querySelectorAll('.product-quote-btn');
-    
-    // Open popup function
-    function openQuotePopup() {
-        quotePopup.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Focus on first input
-        setTimeout(() => {
-            const nameInput = document.getElementById('popupName');
-            if (nameInput) nameInput.focus();
-        }, 300);
-    }
-    
-    // Close popup function
-    function closeQuotePopup() {
-        quotePopup.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-    
-    // Event listeners for opening popup
-    if (quotePopupBtn) {
-        quotePopupBtn.addEventListener('click', openQuotePopup);
-    }
-    
-    if (heroQuoteBtn) {
-        heroQuoteBtn.addEventListener('click', openQuotePopup);
-    }
-    
-    if (aboutQuoteBtn) {
-        aboutQuoteBtn.addEventListener('click', openQuotePopup);
-    }
-    
-    if (ctaQuoteBtn) {
-        ctaQuoteBtn.addEventListener('click', openQuotePopup);
-    }
-    
-    // Event listeners for product quote buttons
-    productQuoteBtns.forEach(btn => {
-        btn.addEventListener('click', openQuotePopup);
-    });
-    
-    // Close popup when clicking overlay or close button
-    if (popupOverlay) {
-        popupOverlay.addEventListener('click', closeQuotePopup);
-    }
-    
-    if (popupClose) {
-        popupClose.addEventListener('click', closeQuotePopup);
-    }
-    
-    // Close popup with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && quotePopup.classList.contains('active')) {
-            closeQuotePopup();
-        }
-    });
-    
-    // Form submission handling - SIMPLIFIED
-    if (quoteForm) {
-        quoteForm.addEventListener('submit', function(e) {
-            // SIMPLE VALIDATION ONLY - Don't block FormSubmit
-            
-            // Check required fields
-            const requiredFields = quoteForm.querySelectorAll('[required]');
-            let hasEmptyFields = false;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    hasEmptyFields = true;
-                    field.style.borderColor = '#d32f2f';
-                    setTimeout(() => {
-                        field.style.borderColor = '';
-                    }, 2000);
-                }
-            });
-            
-            if (hasEmptyFields) {
-                e.preventDefault();
-                showSimplePopupMessage('Please fill in all required fields (*)', 'error');
-                return;
-            }
-            
-            // Check consent checkbox (if it exists)
-            const consentCheckbox = document.getElementById('popupConsent');
-            if (consentCheckbox && !consentCheckbox.checked) {
-                e.preventDefault();
-                showSimplePopupMessage('Please agree to receive quotes and updates', 'error');
-                return;
-            }
-            
-            // If validation passes, let FormSubmit handle the rest
-            // Show loading state
-            const submitBtn = quoteForm.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
-            }
-            
-            // Don't prevent default - let FormSubmit redirect to calculator.html
-        });
-    }
-    
-    // Simple message display
-    function showSimplePopupMessage(text, type) {
-        const popupMessageDisplay = document.getElementById('popupMessageDisplay');
-        if (!popupMessageDisplay) return;
-        
-        popupMessageDisplay.textContent = text;
-        popupMessageDisplay.className = `form-message ${type}`;
-        popupMessageDisplay.style.display = 'block';
-        
-        // Scroll to message
-        popupMessageDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Hide message after 3 seconds
-        setTimeout(() => {
-            popupMessageDisplay.style.display = 'none';
-        }, 3000);
-    }
-    
-    // SIMPLIFIED Phone formatting - Just ensure +91 prefix
-    const popupPhoneInput = document.getElementById('popupPhone');
-    if (popupPhoneInput) {
-        popupPhoneInput.addEventListener('blur', function(e) {
-            let value = e.target.value.trim();
-            if (value && !value.startsWith('+91')) {
-                // Keep only digits
-                const digits = value.replace(/\D/g, '');
-                if (digits.length >= 10) {
-                    e.target.value = '+91 ' + digits.substring(digits.length - 10);
-                }
-            }
-        });
-    }
-}
-
-// Navigation (UNCHANGED)
+// Navigation
 function initNavigation() {
     const mobileToggle = document.getElementById('mobileToggle');
     const mainNav = document.getElementById('mainNav');
@@ -352,34 +176,7 @@ function initNavigation() {
     });
 }
 
-// Update active navigation link based on scroll position
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let currentSectionId = '';
-    const header = document.getElementById('mainHeader');
-    const headerHeight = header ? header.offsetHeight : 0;
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.scrollY >= sectionTop - headerHeight - 100 &&
-            window.scrollY < sectionTop + sectionHeight - headerHeight - 100) {
-            currentSectionId = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSectionId}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// Initialize dropdowns (UNCHANGED)
+// Initialize dropdowns
 function initDropdowns() {
     const specToggles = document.querySelectorAll('.spec-toggle');
     const featuresToggles = document.querySelectorAll('.features-toggle');
@@ -417,7 +214,7 @@ function initDropdowns() {
     });
 }
 
-// Product filtering (UNCHANGED)
+// Product filtering
 function initProductFilter() {
     const categoryBtns = document.querySelectorAll('.category-filter-btn');
     const productCards = document.querySelectorAll('.product-card');
@@ -452,7 +249,7 @@ function initProductFilter() {
     });
 }
 
-// Smooth scrolling for anchor links (UNCHANGED)
+// Smooth scrolling for anchor links
 function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         // Skip external links
@@ -481,7 +278,34 @@ function initSmoothScrolling() {
     });
 }
 
-// Scroll Animations (UNCHANGED)
+// Update active navigation link based on scroll position
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSectionId = '';
+    const header = document.getElementById('mainHeader');
+    const headerHeight = header ? header.offsetHeight : 0;
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= sectionTop - headerHeight - 100 &&
+            window.scrollY < sectionTop + sectionHeight - headerHeight - 100) {
+            currentSectionId = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Scroll Animations
 function initScrollAnimations() {
     const animateElements = document.querySelectorAll('.product-card, .feature-card, .service-card, .industry-card, .tech-item, .trust-card');
     
@@ -502,7 +326,7 @@ function initScrollAnimations() {
     });
 }
 
-// Trigger initial animations after loading (UNCHANGED)
+// Trigger initial animations after loading
 function triggerInitialAnimations() {
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
@@ -514,7 +338,7 @@ function triggerInitialAnimations() {
     window.dispatchEvent(event);
 }
 
-// Initialize card animations (UNCHANGED)
+// Initialize card animations
 function initCardAnimations() {
     const cards = document.querySelectorAll('.product-card, .feature-card, .service-card, .industry-card, .trust-card');
     
@@ -523,7 +347,7 @@ function initCardAnimations() {
     });
 }
 
-// Progress Bars (UNCHANGED)
+// Progress Bars
 function initProgressBars() {
     const progressFills = document.querySelectorAll('.progress-fill');
     
@@ -546,7 +370,7 @@ function initProgressBars() {
     });
 }
 
-// Loading Messages (UNCHANGED)
+// Loading Messages
 function initLoadingMessages() {
     const messages = [
         { text: "🛗 Preparing a smooth ride for you…", icon: "fas fa-elevator" },
@@ -578,7 +402,7 @@ function initLoadingMessages() {
     });
 }
 
-// Start loading messages animation (UNCHANGED)
+// Start loading messages animation
 function startLoadingMessages() {
     const messagesTrack = document.getElementById('loadingMessagesTrack');
     if (messagesTrack) {
@@ -586,7 +410,7 @@ function startLoadingMessages() {
     }
 }
 
-// Initialize Client Logos (UNCHANGED)
+// Initialize Client Logos
 function initClientLogos() {
     const bangaloreCompanies = [
         "Prestige Group", "Brigade Group", "Sobha Limited", "Godrej Properties",
@@ -618,66 +442,10 @@ function initClientLogos() {
     });
 }
 
-// Start client logos animation (UNCHANGED)
+// Start client logos animation
 function startClientLogosAnimation() {
     const logosTrack = document.getElementById('clientLogosTrack');
     if (logosTrack) {
         logosTrack.style.animation = 'slideLogos 40s linear infinite';
-    }
-}
-
-// Contact Form - SIMPLIFIED VERSION
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    
-    if (!contactForm) return;
-    
-    contactForm.addEventListener('submit', function(e) {
-        // SIMPLE VALIDATION ONLY
-        
-        // Check required fields
-        const requiredFields = contactForm.querySelectorAll('[required]');
-        let hasEmptyFields = false;
-        
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                hasEmptyFields = true;
-                field.style.borderColor = '#d32f2f';
-                setTimeout(() => {
-                    field.style.borderColor = '';
-                }, 2000);
-            }
-        });
-        
-        if (hasEmptyFields) {
-            e.preventDefault();
-            showSimpleContactMessage('Please fill in all required fields (*)', 'error');
-            return;
-        }
-        
-        // If validation passes, let FormSubmit handle the rest
-        // Show loading state
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        }
-        
-        // Don't prevent default - let FormSubmit redirect to thank-you.html
-    });
-    
-    // Simple message display
-    function showSimpleContactMessage(text, type) {
-        const formMessage = document.getElementById('formMessage');
-        if (!formMessage) return;
-        
-        formMessage.textContent = text;
-        formMessage.className = `form-message ${type}`;
-        formMessage.style.display = 'block';
-        
-        // Hide message after 3 seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 3000);
     }
 }
